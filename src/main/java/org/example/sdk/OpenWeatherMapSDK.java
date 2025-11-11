@@ -16,7 +16,6 @@ public interface OpenWeatherMapSDK {
      * Implementations should return cached data if it is still fresh (less than 10 minutes old)
      * and should update the cache otherwise. In polling mode, the SDK should keep the cache
      * warm in the background to provide near zero-latency responses.
-     *
      * Mode is configured at SDK initialization, not per-call.
      *
      * @param city city name (case-insensitive)

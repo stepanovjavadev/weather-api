@@ -2,7 +2,7 @@
 okhttp = "5.3.0"
 gson = "2.13.2"
 slf4j = "2.0.17"
-junit = "5.10.3"
+junit = "5.14.1"
 mockito = "5.20.0"
 
 [libraries]

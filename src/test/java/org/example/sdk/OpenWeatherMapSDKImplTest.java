@@ -1,12 +1,9 @@
-package org.example;
+package org.example.sdk;
 
 import org.example.cache.WeatherCache;
 import org.example.constant.Mode;
 import org.example.error.SDKException;
 import org.example.model.WeatherData;
-import org.example.sdk.OpenWeatherMapSDK;
-import org.example.sdk.OpenWeatherMapSDKFactory;
-import org.example.sdk.OpenWeatherMapSDKImpl;
 import org.example.service.WeatherService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,8 +13,18 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class OpenWeatherMapSDKImplTest {
@@ -43,11 +50,10 @@ class OpenWeatherMapSDKImplTest {
 
     private OpenWeatherMapSDKImpl onDemandSdk;
     private OpenWeatherMapSDKImpl pollingSdk;
-    private WeatherData mockWeatherData;
 
     @BeforeEach
     void setUp() throws SDKException {
-        mockWeatherData = new WeatherData();
+        WeatherData mockWeatherData = new WeatherData();
         mockWeatherData.setName(CITY);
         lenient().when(mockWeatherService.fetchWeather(anyString())).thenReturn(mockWeatherData);
         onDemandSdk = new OpenWeatherMapSDKImpl(API_KEY, Mode.ON_DEMAND, mockWeatherService, cache);
