@@ -1,0 +1,18 @@
+[versions]
+okhttp = "5.3.0"
+gson = "2.13.2"
+slf4j = "2.0.17"
+junit = "5.10.3"
+mockito = "5.20.0"
+
+[libraries]
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+slf4jApi = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+junitBom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junitJupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher" }
+
+mockitoCore = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockitoJunitJupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
