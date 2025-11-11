@@ -35,7 +35,17 @@ public class OpenWeatherMapSDKImpl implements OpenWeatherMapSDK {
      * Advanced constructor primarily for testing or custom dependency injection.
      * Prefer creating instances via {@link OpenWeatherMapSDKFactory} to ensure one-per-key semantics.
      */
-    OpenWeatherMapSDKImpl(String apiKey, Mode mode) {
+    public OpenWeatherMapSDKImpl(String apiKey, Mode mode, WeatherService service, WeatherCache cache) {
+        this.apiKey = apiKey;
+        this.mode = mode;
+        this.cache = cache;
+        this.weatherService = service;
+        this.scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        if (mode == Mode.POLLING) startPolling();
+    }
+
+    public OpenWeatherMapSDKImpl(String apiKey, Mode mode) {
         this.apiKey = apiKey;
         this.mode = mode;
         this.cache = new WeatherCache();
