@@ -16,6 +16,7 @@ Technical Documentation:
    object.
 
 Intended JSON structure in SDK API response:
+```json
 {
    "weather": {
       "main": "Clouds",
@@ -37,3 +38,4 @@ Intended JSON structure in SDK API response:
    "timezone": 3600,
    "name": "Zocca"
 }
+```
